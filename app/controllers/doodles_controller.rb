@@ -10,7 +10,6 @@ class DoodlesController < ApplicationController
 
   def create
     @current_user = User.find_by(gpid: session["user_id"])
-    binding.pry
     @doodle = Doodle.create(image: params[:image].tempfile)
     @current_user.doodles << @doodle
     render nothing: true
