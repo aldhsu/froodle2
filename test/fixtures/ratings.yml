@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: ratings
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  doodle_id  :integer
+#  rating     :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  doodle_id: 1
+  rating: 1
+
+two:
+  user_id: 1
+  doodle_id: 1
+  rating: 1

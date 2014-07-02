@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: prompts
+#
+#  id         :integer          not null, primary key
+#  difficulty :integer
+#  question   :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  difficulty: 1
+  question: MyString
+
+two:
+  difficulty: 1
+  question: MyString

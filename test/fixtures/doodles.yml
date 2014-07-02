@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: doodles
+#
+#  id         :integer          not null, primary key
+#  prompt_id  :integer
+#  image      :string(255)
+#  user_id    :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  prompt_id: 1
+  image: MyString
+  user_id: 1
+
+two:
+  prompt_id: 1
+  image: MyString
+  user_id: 1

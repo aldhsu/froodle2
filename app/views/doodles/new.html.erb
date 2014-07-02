@@ -1,0 +1,114 @@
+<h1><%= @prompt %></h1>
+
+<canvas id="canvas" width="400" height="400">
+</canvas>
+  <script>
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+    function getMousePos(canvas, event){
+      var rect = canvas.getBoundingClientRect();
+      return {
+        x: event.clientX - rect.left,
+        y: event.clientY - rect.top
+      };
+    }
+
+    function draw(oldposition, canvas, event, context) {
+      var mousepos = getMousePos(canvas, event);
+      context.beginPath();
+      context.moveTo(mousepos.x, mousepos.y);
+      context.lineTo(oldposition.x, oldposition.y);
+      context.stroke();
+      return mousepos;
+    }
+    var oldposition = null;
+    var drawing = false;
+
+    canvas.addEventListener("mousedown", function(event) {
+      oldposition = getMousePos(canvas, event);
+      drawing = true;
+    })
+    canvas.addEventListener("mouseup", function(event) {
+      drawing = false;
+    })
+    canvas.addEventListener("mouseout", function(event) {
+      drawing = false;
+    })
+
+    canvas.addEventListener("mousemove", function(event) {
+      if (oldposition == null) {
+        oldposition = getMousePos;
+      }
+      if (drawing == true) {
+        oldposition = draw(oldposition, canvas, event, context);
+      }
+    })
+  </script>
+  <p id="print"></p>
+  <button id="submit">Submit</button>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js">
+  </script>
+  <script type="text/javascript">
+
+    function dataUrltoBlob(dataUrl) {
+      var binary = atob(dataUrl.split(',')[1]);
+      var array = [];
+      for (var i = 0; i < binary.length; i++) {
+        array.push(binary.charCodeAt(i));
+      }
+      return new Blob([new Uint8Array(array)], {type:'image/png'});
+    }
+    var button = document.getElementById('submit');
+
+    function formData() {
+    var file = dataUrltoBlob(canvas.toDataURL());
+    var fd = new FormData();
+    fd.append("image", file);
+    fd.append('user_id', '124124');
+    return fd;
+    }
+
+    function submitPicture() {
+      $.ajax({
+        url: "/doodles",
+        type: "POST",
+        data: formData(),
+        processData: false,
+        contentType: false,
+        success: function() {
+          window.location = '/doodles';
+        }
+      })
+    }
+    button.addEventListener("click", function() {
+      submitPicture();
+    })
+
+    var Timer;
+    var TotalSeconds;
+
+    function CreateTimer(TimerID, Time) {
+    Timer = document.getElementById(TimerID);
+    TotalSeconds = Time;
+
+    UpdateTimer();
+    window.setTimeout("Tick()", 1000);
+    }
+
+    function Tick() {
+      TotalSeconds -= 1;
+      UpdateTimer();
+      if (TotalSeconds == 0) {
+        console.log('finish');
+        submitPicture();
+      }
+      window.setTimeout("Tick()", 1000);
+    }
+
+    function UpdateTimer() {
+    Timer.innerHTML = TotalSeconds;
+    }
+
+    window.onload = CreateTimer("print", 10);
+  </script>
