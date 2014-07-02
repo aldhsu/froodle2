@@ -1,2 +1,13 @@
-<h1>Prompts#new</h1>
-<p>Find me in app/views/prompts/new.html.erb</p>
+<h1>Suggest a new Prompt</h1>
+  <%= form_for @prompt do |f| %>
+    <p>
+      <%= f.label :question %>
+      <%= f.text_field :question %>
+    </p>
+    <p>
+      <%= f.label :difficulty %>
+      <%= f.text_field :difficulty %>
+    </p>
+
+    <%= f.submit %>
+  <% end %>

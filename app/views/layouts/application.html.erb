@@ -86,7 +86,7 @@
     <% if @current_user %>
       <%= link_to("User Details", users_path) %>
       <%= link_to("Draw!", new_doodle_path) %>
-      <%= link_to("Suggest and Rate prompts", prompts_path) %>
+      <%= link_to("Suggest and Rate prompts", new_prompt_path) %>
       <%= link_to("Guess Doodles", doodle_guess_path) %>
     <% end %>
   </nav>

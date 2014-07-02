@@ -1,7 +1,11 @@
-<%= image_tag(@doodle.image) %>
-<%= form_tag doodle_path(@doodle) do %>
-  <% @prompts.shuffle.each do |prompt|%>
-    <%= radio_button_tag(:question, prompt) %>
-    <%= label_tag(:question, prompt) %>
+<% unless @prompt %>
+  <%= image_tag(@doodle.image) %>
+  <%= form_tag doodle_path(@doodle) do %>
+    <% @prompts.shuffle.each do |prompt|%>
+      <%= radio_button_tag(:question, prompt) %>
+      <%= label_tag(:question, prompt) %>
+    <% end %>
   <% end %>
+<% else %>
+  <p><%= @prompt %></p>
 <% end %>

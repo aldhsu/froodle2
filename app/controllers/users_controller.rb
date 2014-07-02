@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     name = response["displayName"]
     session["user_id"] = user_id
     if User.find_by(gpid: user_id) == nil
-      User.create(gpid: user_id)
+      User.create(gpid: user_id, name: name)
     end
     render nothing: true
   end

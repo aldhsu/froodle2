@@ -24,8 +24,12 @@ class DoodlesController < ApplicationController
   end
 
   def guess
-    @doodle = Doodle.all.shuffle.first
-    @prompts = [@doodle.prompt.question] + Prompt.all.shuffle[1,3].map{|prompt| prompt.question}
+    begin
+      @doodle = Doodle.all.shuffle.first
+      @prompts = [@doodle.prompt.question] + Prompt.all.shuffle[1,3].map{|prompt| prompt.question}
+    rescue
+      @prompt = "No Doodles left to guess"
+    end
   end
 
   def check

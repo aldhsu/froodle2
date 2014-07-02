@@ -3,4 +3,14 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
   </p>
+  <%= f.submit %>
+<% end %>
+
+<% @user.doodles.each do |doodle| %>
+  <div>
+    <p>
+      <%= doodle.prompt.question %>
+    </p>
+    <%= image_tag(doodle.image) %>
+  </div>
 <% end %>

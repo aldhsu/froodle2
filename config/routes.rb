@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :prompts
   resources :doodles
   resources :users
+  root to: 'pages#welcome'
   get '/doodle/guess' => 'doodles#guess'
   get '/doodle/:id/check' => 'doodles#check'
   post '/' => 'users#create'
