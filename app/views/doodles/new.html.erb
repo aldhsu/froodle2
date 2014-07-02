@@ -1,4 +1,4 @@
-<h1><%= @prompt %></h1>
+<h1 id="question"><%= @prompt %></h1>
 
 <canvas id="canvas" width="400" height="400">
 </canvas>
@@ -65,7 +65,7 @@
     var file = dataUrltoBlob(canvas.toDataURL());
     var fd = new FormData();
     fd.append("image", file);
-    fd.append('user_id', '124124');
+    fd.append("question", document.getElementById('question').innerHTML);
     return fd;
     }
 

@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   resources :prompts
   resources :doodles
   resources :users
-
+  get '/doodle/guess' => 'doodles#guess'
+  get '/doodle/:id/check' => 'doodles#check'
   post '/' => 'users#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,1 +1,4 @@
-
+<% @users.each do |user| %>
+  <%= user %>
+  <%= link_to("edit", edit_user_path(user)) %>
+<% end %>

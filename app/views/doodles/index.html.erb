@@ -1,4 +1,4 @@
 <% @doodles.each do |doodle| %>
-  <%= doodle.user_id %>
+  <%= doodle.user.try(:name) %>
   <%= image_tag(doodle.image) %>
 <% end %>
