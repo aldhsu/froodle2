@@ -33,5 +33,6 @@ class DoodlesController < ApplicationController
   end
 
   def check
+    raise
   end
 end

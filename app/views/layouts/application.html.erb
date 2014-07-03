@@ -69,6 +69,9 @@
           beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
           data: {auth_token: authResult},
           immediate: true,
+          success: function(){
+            window.location('/');
+          }
         })
     } else {
       // Update the app to reflect a signed out user

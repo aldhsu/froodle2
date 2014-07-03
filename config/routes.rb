@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users
   root to: 'pages#welcome'
   get '/doodle/guess' => 'doodles#guess'
-  get '/doodle/:id/check' => 'doodles#check'
+  post '/doodle' => 'doodles#check'
   post '/' => 'users#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

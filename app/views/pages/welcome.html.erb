@@ -1,3 +1,6 @@
 <h1>Froodle</h1>
-<h2>Doodle with Friends!</h2>
-<h2>Sign in with Google Plus!</h2>
+<% unless @current_user %>
+  <h2>Doodle with Friends!</h2>
+  <h2>Sign in with Google Plus!</h2>
+<% else %>
+  <h2>Hi <% @current_user %></h2>

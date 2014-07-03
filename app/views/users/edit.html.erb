@@ -6,6 +6,8 @@
   <%= f.submit %>
 <% end %>
 
+<p>Points: <%= @user.points %></p>
+
 <% @user.doodles.each do |doodle| %>
   <div>
     <p>
