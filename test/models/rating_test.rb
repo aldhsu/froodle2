@@ -8,6 +8,7 @@
 #  rating     :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  guessed    :integer          default(0)
 #
 
 require 'test_helper'

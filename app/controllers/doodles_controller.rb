@@ -33,16 +33,19 @@ class DoodlesController < ApplicationController
   end
 
   def check
-    doodle = Doodle.find(params[:id])
+    @doodle = Doodle.find(params[:id])
     @answer = params[:question]
-    @solution = doodle.prompt.question
+    @solution = @doodle.prompt.question
 
     @display = ""
     #logic for checking and setting points
-    if answer == solution
-      @display = "Correct! +#{doodle.prompt.difficulty}pts"
+    if @answer == @solution
+      @current_user.points += @doodle.prompt.difficulty
+      @display = "Correct! +#{@doodle.prompt.difficulty}pts Total: #{@current_user.points}"
+      Rating.create(user_id: @current_user.id, doodle_id: @doodle.id, guessed: 1)
     else
-      @display = "Incorrect! Prompt was #{@solution}"
+      @display = "Incorrect! Prompt was #{@solution}!"
+      Rating.create(user_id: @current_user.id, doodle_id: @doodle.id, guessed: -1)
     end
   end
 end

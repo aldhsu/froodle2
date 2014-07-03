@@ -8,9 +8,10 @@
 #  rating     :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  guessed    :integer          default(0)
 #
 
 class Rating < ActiveRecord::Base
-  belongs_to :user_id
-  belongs_to :doodle_id
+  belongs_to :user
+  belongs_to :doodle
 end

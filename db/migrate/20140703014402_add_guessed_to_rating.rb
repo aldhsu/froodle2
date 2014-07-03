@@ -1,5 +1,5 @@
 class AddGuessedToRating < ActiveRecord::Migration
   def up
-    add_column :rating, :guessed, :boolean, default: false
+    add_column :ratings, :guessed, :integer, default: 0
   end
 end
