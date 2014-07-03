@@ -23,6 +23,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    session["user_id"] = nil
+    redirect_to root_path
   end
 
   def edit
@@ -32,7 +34,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to users_path
+    redirect_to users_details_path
+  end
+
+  def details
   end
 
   private

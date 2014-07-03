@@ -1,10 +1,20 @@
-<h1 id="question"><%= @prompt %></h1>
-
-<canvas id="canvas" width="400" height="400">
-</canvas>
+<% if @prompt.present? %>
+  <h1 id="question"><%= @prompt.question %></h1>
+  <div class="drawingarea">
+    <canvas id="canvas" width="400" height="400">
+    </canvas>
+    <div>
+      <div class="swatch" style="background: #ff0055" hex="#ff0055"></div>
+      <div class="swatch" style="background: #5500ff" hex="#5500ff"></div>
+      <div class="swatch" style="background: #ffffff" hex="#fffff"></div>
+      <div class="swatch" style="background: #3fff00" hex="#3fff00"></div>
+      <div class="swatch" style="background: #000000" hex="#000000"></div>
+    </div>
+  </div>
   <script>
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
+    var color = "df4b26";
 
     function getMousePos(canvas, event){
       var rect = canvas.getBoundingClientRect();
@@ -19,6 +29,7 @@
       context.beginPath();
       context.moveTo(mousepos.x, mousepos.y);
       context.lineTo(oldposition.x, oldposition.y);
+      context.strokeStyle = color;
       context.stroke();
       return mousepos;
     }
@@ -43,6 +54,10 @@
       if (drawing == true) {
         oldposition = draw(oldposition, canvas, event, context);
       }
+    })
+
+    $(".swatch").click(function(){
+      color = $(this).attr("hex");
     })
   </script>
   <p id="print"></p>
@@ -112,3 +127,6 @@
 
     window.onload = CreateTimer("print", 30);
   </script>
+<% else %>
+  <%= "No more prompts!" %>
+<% end %>

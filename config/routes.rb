@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/users/details' => 'users#details'
+  get '/users/destroy' => 'users#destroy'
   resources :prompts
   resources :doodles
   resources :users

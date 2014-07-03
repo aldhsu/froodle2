@@ -12,5 +12,5 @@
 
 class User < ActiveRecord::Base
   has_many :doodles
-  has_many :ratings, through: :doodles
+  has_many :ratings
 end

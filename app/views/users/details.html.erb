@@ -1,0 +1,18 @@
+<%= form_for @current_user do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <%= f.submit %>
+<% end %>
+
+<p>Points: <%= @current_user.points %></p>
+
+<% @current_user.doodles.each do |doodle| %>
+  <div class="doodle img-responsive img-rounded">
+    <p>
+      <%= doodle.prompt.question %>: +<%= doodle.prompt.difficulty %>
+    </p>
+    <%= image_tag(doodle.image) %>
+  </div>
+<% end %>

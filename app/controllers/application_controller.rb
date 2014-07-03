@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   def get_user
     if session['user_id'].present?
       @current_user = User.find_by(gpid: session['user_id'])
+    else
+      # redirect_to root_path
     end
   end
 

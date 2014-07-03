@@ -11,6 +11,7 @@
 <div class="container">
   <!-- Google Sign in -->
   <% unless @current_user %>
+    <nav>
     <span id="signinButton">
       <span
         class="g-signin"
@@ -72,7 +73,7 @@
             data: {auth_token: authResult},
             immediate: true,
             success: function(){
-              window.location('/');
+              window.location = '/';
             }
           })
       } else {
@@ -85,14 +86,16 @@
       }
     }
     </script>
+  <% else @current_user %>
+    <%= "Welcome back #{@current_user.name}!" %>
   <% end %>
-    <%= "Welcome back #{@current_user.name} !"if @current_user %>
-    <nav>
       <% if @current_user %>
-        <%= link_to("User Details", users_path) %>
-        <%= link_to("Draw!", new_doodle_path) %>
-        <%= link_to("Suggest and Rate prompts", new_prompt_path) %>
-        <%= link_to("Guess Doodles", doodle_guess_path) %>
+      <ul class="nav nav-tabs" role="tablist">
+        <li><%= link_to("User Details", users_details_path) %></li>
+        <li><%= link_to("Draw!", new_doodle_path) %></li>
+        <li><%= link_to("Suggest and Rate prompts", new_prompt_path) %></li>
+        <li><%= link_to("Guess Doodles", doodle_guess_path) %></li>
+      </ul>
       <% end %>
     </nav>
 
