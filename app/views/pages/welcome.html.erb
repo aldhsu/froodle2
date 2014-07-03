@@ -1,7 +1,9 @@
-<h1>Froodle</h1>
-<% unless @current_user %>
-  <h2>Doodle with Friends!</h2>
-  <h2>Sign in with Google Plus!</h2>
-<% else %>
-  <h2>Welcome back <%= @current_user.name %>!</h2>
-<% end %>
+<div class="welcome">
+  <h1 id="title">Froodle</h1>
+  <% unless @current_user %>
+    <h2>Doodle with Friends!</h2>
+    <h2>Sign in with Google Plus!</h2>
+  <% else %>
+    <h2>Welcome back <%= @current_user.name %>!</h2>
+  <% end %>
+</div>

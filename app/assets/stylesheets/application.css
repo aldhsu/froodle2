@@ -22,20 +22,33 @@ body {
   font-family: 'Just Me Again Down Here', cursive;
   font-size: 3em;
 }
-
+.drawingarea {
+  margin: 0 auto;
+  text-align: center;
+}
 canvas {
-  background: rgba(255,255,255,.9);
+  background: rgba(0,0,0,.6);
+  display: inline-block;
+  margin: 0 auto;
 }
 
 nav {
-  background: white;
-  border: 1px solid black;
-  border-radius: .5em;
 }
-
+#sectiondoodles {
+  text-align: center;
+}
 .doodle {
-  background: rgba(255,255,255,.9);
+  background: rgba(0,0,0,.6);
   display: inline-block;
+  border-radius: 5px;
+}
+.userdoodle {
+  margin: 0px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.userdoodle p {
+  margin-bottom: 0px;
 }
 
 #timer {
@@ -51,4 +64,26 @@ nav {
   border-radius: 3px;
 }
 
+.active {
+  background: #eee;
+}
+
+.container {
+  margin: 1em auto;
+  background: rgba(255, 255, 255, 0.9);
+  min-height: 900px;
+  border-radius: 1em;
+  box-shadow: 10px 10px 5px black;
+}
+
+.nav {
+  border-bottom: 4px solid #eee;
+}
+
+.welcome {
+  text-align: center;
+}
+#title {
+  font-size: 10em;
+}
 

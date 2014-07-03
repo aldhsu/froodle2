@@ -7,12 +7,15 @@
 <% end %>
 
 <p>Points: <%= @current_user.points %></p>
-
+<div id="sectiondoodles">
 <% @current_user.doodles.each do |doodle| %>
-  <div class="doodle img-responsive img-rounded">
+   <div class="userdoodle">
     <p>
       <%= doodle.prompt.question %>: +<%= doodle.prompt.difficulty %>
     </p>
-    <%= image_tag(doodle.image) %>
+    <div class="doodle img-responsive img-rounded">
+      <%= image_tag(doodle.image) %>
+    </div>
   </div>
 <% end %>
+</div>

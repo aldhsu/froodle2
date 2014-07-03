@@ -10,8 +10,8 @@
 <body>
 <div class="container">
   <!-- Google Sign in -->
+  <nav>
   <% unless @current_user %>
-    <nav>
     <span id="signinButton">
       <span
         class="g-signin"
@@ -90,12 +90,14 @@
     <%= "Welcome back #{@current_user.name}!" %>
   <% end %>
       <% if @current_user %>
-      <ul class="nav nav-tabs" role="tablist">
-        <li><%= link_to("User Details", users_details_path) %></li>
-        <li><%= link_to("Draw!", new_doodle_path) %></li>
-        <li><%= link_to("Suggest and Rate prompts", new_prompt_path) %></li>
-        <li><%= link_to("Guess Doodles", doodle_guess_path) %></li>
-      </ul>
+        <div id="smartnav">
+          <ul class="nav nav-tabs" role="tablist">
+            <li><%= link_to("User Details", users_details_path) %></li>
+            <li><%= link_to("Draw!", new_doodle_path) %></li>
+            <li><%= link_to("Suggest and Rate prompts", new_prompt_path) %></li>
+            <li><%= link_to("Guess Doodles", doodle_guess_path) %></li>
+          </ul>
+        </div>
       <% end %>
     </nav>
 
