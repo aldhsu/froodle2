@@ -9,7 +9,6 @@ class DoodlesController < ApplicationController
   end
 
   def create
-    binding.pry
     @current_user = User.find_by(gpid: session["user_id"])
     prompt = Prompt.find_by(question: params[:question])
     @doodle = Doodle.create(image: params[:image].tempfile, prompt_id: prompt.id )
