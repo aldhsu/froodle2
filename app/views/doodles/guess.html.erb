@@ -1,10 +1,11 @@
 <% unless @prompt %>
   <%= image_tag(@doodle.image) %>
-  <%= form_tag doodle_path do %>
+  <%= form_tag doodle_guess_path do %>
     <% @prompts.shuffle.each do |prompt|%>
       <%= radio_button_tag(:question, prompt) %>
       <%= label_tag(:question, prompt) %>
     <% end %>
+    <%= text_field_tag(:id, @doodle.id, hidden: true )%>
     <p>
       <%= submit_tag(value = 'Guess!') %>
     </p>

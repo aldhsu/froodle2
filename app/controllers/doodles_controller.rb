@@ -33,6 +33,16 @@ class DoodlesController < ApplicationController
   end
 
   def check
-    raise
+    doodle = Doodle.find(params[:id])
+    @answer = params[:question]
+    @solution = doodle.prompt.question
+
+    @display = ""
+    #logic for checking and setting points
+    if answer == solution
+      @display = "Correct! +#{doodle.prompt.difficulty}pts"
+    else
+      @display = "Incorrect! Prompt was #{@solution}"
+    end
   end
 end

@@ -43,6 +43,7 @@ gem 'rails_12factor', group: :production
 gem 'cloudinary'
 gem 'google_plus'
 gem 'httparty'
+gem 'bootstrap-sass'
 
 group :development do
   gem 'pry-rails'
