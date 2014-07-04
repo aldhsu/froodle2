@@ -2,12 +2,13 @@
   <p>
     <%= f.label :name %>
     <%= f.text_field :name %>
+    <%= f.submit %>
   </p>
-  <%= f.submit %>
 <% end %>
 
 <p>Points: <%= @current_user.points %></p>
 <div id="sectiondoodles">
+<h1>User Doodles</h1>
 <% @current_user.doodles.each do |doodle| %>
    <div class="userdoodle">
     <p>
@@ -24,4 +25,16 @@
     </div>
   </div>
 <% end %>
-</div>
+<% if @current_user.ratings.present? %>
+  <h1>Rated Doodles</h1>
+  <% @current_user.ratings.each do |rating| %>
+    <div class="userdoodle">
+      <p><%= rating.doodle.prompt.question %> Difficulty: <%= rating.doodle.prompt.difficulty %></p>
+      <p><%= rating.guessed == 1 ? 'Correct' : 'Incorrect' %></p>
+      <div class="doodle img-responsive img-rounded">
+        <%= image_tag(rating.doodle.image) %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+<% end %>

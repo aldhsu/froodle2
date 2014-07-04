@@ -61,6 +61,9 @@ nav {
   display: inline-block;
   border-radius: 5px;
 }
+.doodle img {
+  width: 200px;
+}
 .userdoodle {
   margin: 0px;
   display: inline-block;
