@@ -16,6 +16,12 @@
     <div class="doodle img-responsive img-rounded">
       <%= image_tag(doodle.image) %>
     </div>
+    <div class="doodleinfo">
+      <p>Users guessed</p>
+      <p>Correctly:<%= right = doodle.ratings.where(guessed: 1).count %>, points <%= right * doodle.prompt.difficulty%></p>
+      <p>Incorrectly:<%= doodle.ratings.where(guessed: -1).count %></p>
+
+    </div>
   </div>
 <% end %>
 </div>

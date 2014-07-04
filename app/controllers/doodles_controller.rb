@@ -30,7 +30,7 @@ class DoodlesController < ApplicationController
     #catch error if none left
     begin
       #get all doodles, subtract where ratings exist
-      @doodle = (Doodle.all - @current_user.ratings.map{|rating| rating.doodle}).shuffle.first
+      @doodle = (Doodle.all - @current_user.doodles - @current_user.ratings.map{|rating| rating.doodle}).shuffle.first
       @prompts = [@doodle.prompt.question] + (Prompt.all-[@doodle.prompt]).shuffle[1,3].map{|prompt| prompt.question}
       # raise
     rescue
@@ -50,6 +50,8 @@ class DoodlesController < ApplicationController
       @current_user.save
       @display = "Correct! +#{@doodle.prompt.difficulty}pts Total: #{@current_user.points}"
       Rating.create(user_id: @current_user.id, doodle_id: @doodle.id, guessed: 1)
+      @doodle.user.points += @doodle.prompt.difficulty
+      @doodle.save
     else
       @display = "Incorrect! Prompt was #{@solution}!"
       Rating.create(user_id: @current_user.id, doodle_id: @doodle.id, guessed: -1)

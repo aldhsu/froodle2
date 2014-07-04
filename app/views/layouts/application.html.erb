@@ -87,19 +87,17 @@
     }
     </script>
   <% else @current_user %>
-    <%= "Welcome back #{@current_user.name}!" %>
-  <% end %>
-      <% if @current_user %>
-        <div id="smartnav">
-          <ul class="nav nav-tabs" role="tablist">
-            <li><%= link_to("User Details", users_details_path) %></li>
-            <li><%= link_to("Draw!", new_doodle_path) %></li>
-            <li><%= link_to("Suggest and Rate prompts", new_prompt_path) %></li>
-            <li><%= link_to("Guess Doodles", doodle_guess_path) %></li>
-          </ul>
-        </div>
-      <% end %>
-    </nav>
+    <div id="username" class="row"><%= "Welcome back #{@current_user.name}!" %></div>
+      <div id="smartnav">
+        <ul class="nav nav-tabs" role="tablist">
+          <li><%= link_to("User Details", users_details_path) %></li>
+          <li><%= link_to("Draw!", new_doodle_path) %></li>
+          <li><%= link_to("Suggest Prompts", new_prompt_path) %></li>
+          <li><%= link_to("Guess Doodles", doodle_guess_path) %></li>
+        </ul>
+      </div>
+    <% end %>
+  </nav>
 
   <%= yield %>
 </div>

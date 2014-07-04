@@ -11,4 +11,5 @@
 
 class Prompt < ActiveRecord::Base
   has_many :doodles
+  validates :difficulty, presence: true
 end
