@@ -39,11 +39,16 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'rails_12factor', group: :production
 gem 'cloudinary'
 gem 'google_plus'
 gem 'httparty'
 gem 'bootstrap-sass'
+
+
+group :production do
+  gem 'rails_12factor', group: :production
+  gem 'newrelic_rpm'
+end
 
 group :development do
   gem 'pry-rails'
