@@ -45,6 +45,7 @@ nav {
   position:absolute;
   margin-top: .5em;
   margin-left: .5em;
+  display: none;
 }
 
 #smartnav {
