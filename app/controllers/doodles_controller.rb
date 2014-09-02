@@ -19,7 +19,8 @@ class DoodlesController < ApplicationController
   end
 
   def new
-    @prompt = (Prompt.all - @current_user.doodles.map{|doodle| doodle.prompt}).shuffle.first
+    # Need to refine this to ActiveRecord query
+    @prompt = (Prompt.all - @current_user.doodles.joins(:prompt).pluck("prompts.question")).shuffle.first
     @doodle = Doodle.new
   end
 

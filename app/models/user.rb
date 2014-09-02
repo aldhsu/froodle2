@@ -11,6 +11,7 @@
 #
 
 class User < ActiveRecord::Base
-  has_many :doodles
-  has_many :ratings
+  has_many :doodles, dependent: :destroy
+  has_many :ratings, dependent: :destroy
+
 end
