@@ -1,5 +1,5 @@
 class DoodlesController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
 
   def index
     @doodles = Doodle.all
@@ -9,7 +9,7 @@ class DoodlesController < ApplicationController
   end
 
   def create
-    @current_user = User.find_by(gpid: session["user_id"])
+    @current_user = User.find(session["user_id"])
     prompt = Prompt.find_by(question: params[:question])
     @doodle = Doodle.create(image: params[:image].tempfile, prompt_id: prompt.id )
     @current_user.doodles << @doodle

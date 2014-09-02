@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
+  post 'sessions' => 'sessions#create'
+  post 'sessions/:id' => 'sessions#destroy'
+
   get '/users/details' => 'users#details'
   get '/users/destroy' => 'users#destroy'
+
   resources :prompts
   resources :doodles
   resources :users
+
   root to: 'pages#welcome'
+
   get '/doodle/guess' => 'doodles#guess'
   post '/doodle/guess' => 'doodles#check'
-  post '/' => 'users#create'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

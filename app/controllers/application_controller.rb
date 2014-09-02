@@ -5,8 +5,10 @@ class ApplicationController < ActionController::Base
   before_action :get_user
 
   def get_user
+    # binding.pry
     if session['user_id'].present?
-      @current_user = User.find_by(gpid: session['user_id'])
+      @current_user = User.where(id: session['user_id']).first
+      session['user_id'] = nil if !@current_user
     else
       # redirect_to root_path
     end
