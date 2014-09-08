@@ -32,6 +32,7 @@ canvas {
   margin: 0 auto;
   border-radius: 5px;
 }
+
 nav {
   position:relative;
   height:65px;
@@ -45,7 +46,6 @@ nav {
   position:absolute;
   margin-top: .5em;
   margin-left: .5em;
-  display: none;
 }
 
 #smartnav {
@@ -61,17 +61,17 @@ nav {
   background: rgba(0,0,0,.6);
   display: inline-block;
   border-radius: 5px;
-}
-.doodle img {
-  width: 200px;
+  img {
+    width: 200px;
+  }
 }
 .userdoodle {
   margin: 0px;
   display: inline-block;
   margin-bottom: 10px;
-}
-.userdoodle p {
-  margin-bottom: 0px;
+  p {
+    margin-bottom: 0px;
+  }
 }
 
 #timer {

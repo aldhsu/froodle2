@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html itemscope itemtype="http://schema.org/Article">
 <head>
   <title>Froodle</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -11,19 +11,9 @@
 <div class="container">
   <!-- Google Sign in -->
   <nav>
-    <span id="signinButton">
-      <span
-        class="g-signin"
-        data-callback="signinCallback"
-        data-clientid="326708415798-9ildkh4i1g8k5unf43cgdk8774oikhbk.apps.googleusercontent.com"
-        data-cookiepolicy="single_host_origin"
-        data-requestvisibleactions="http://schema.org/AddAction"
-        data-redirecturi="postmessage"
-        data-scope="https://www.googleapis.com/auth/plus.login">
-      </span>
-    </span>
-    <script type="text/javascript"></script>
-
+  <% unless @current_user%>
+    <%= render partial: '/layouts/sign_in_button' %>
+  <% end %>
   <% if @current_user %>
     <div id="username" class="row"><%= "Welcome back #{@current_user.name}!" %> <a class="logout" href="#">Log Out</a></div>
       <div id="smartnav">

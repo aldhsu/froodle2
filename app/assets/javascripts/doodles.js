@@ -19,6 +19,7 @@ $(document).ready(function() {
       context.moveTo(mousepos.x, mousepos.y);
       context.lineTo(oldposition.x, oldposition.y);
       context.strokeStyle = color;
+      context.lineWidth = 15;
       context.stroke();
       return mousepos;
     }
@@ -106,7 +107,7 @@ $(document).ready(function() {
     function Tick() {
       TotalSeconds -= 1;
       UpdateTimer();
-      if (TotalSeconds == 0) {
+      if (TotalSeconds == 60) {
         console.log('finish');
         submitPicture();
       }
@@ -117,6 +118,6 @@ $(document).ready(function() {
       Timer.innerHTML = "Submit " + TotalSeconds;
     }
 
-    window.onload = CreateTimer("submit", 1);
+    window.onload = CreateTimer("submit", 60);
   }
 })
