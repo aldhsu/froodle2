@@ -16,9 +16,7 @@ class SessionsController < ApplicationController
   def destroy
     revokeUrl = "https://accounts.google.com/o/oauth2/revoke?token=#{@current_user.access_token}";
     response = HTTParty.get(revokeUrl)
-    if response.nil?
-      session[:user_id] = nil
-      redirect_to root_path
-    end
+    session[:user_id] = nil
+    redirect_to root_path
   end
 end

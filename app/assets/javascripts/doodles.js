@@ -3,7 +3,7 @@ $(document).ready(function() {
     // Drawing Functions and Vars
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
-    var color = "fffff";
+    var color = "ffffff";
 
     function getMousePos(canvas, event){
       var rect = canvas.getBoundingClientRect();
@@ -48,7 +48,7 @@ $(document).ready(function() {
         oldposition = draw(oldposition, canvas, event, context);
       }
     })
-
+    // Change color
     $(".swatch").click(function(){
       color = $(this).attr("hex");
     })
