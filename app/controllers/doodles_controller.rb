@@ -18,8 +18,8 @@ class DoodlesController < ApplicationController
   end
 
   def new
-    # Need to refine this to ActiveRecord query
-    @prompt = (Prompt.all - @current_user.doodles.joins(:prompt).pluck("prompts.question")).shuffle.first
+    # Need to see if random is too slow
+    @prompt = Doodle.get_prompt(@current_user)
     @doodle = Doodle.new
   end
 
@@ -31,7 +31,7 @@ class DoodlesController < ApplicationController
     begin
       #get all doodles, subtract where ratings exist
       #need to refine this again with joins (Doodle.joins(:rating).where.not('ratings.user_id' => @current_user ), random on count?)
-      @doodle = (Doodle.all - @current_user.doodles - @current_user.ratings.map{|rating| rating.doodle}).shuffle.first
+      @doodle = (Doodle.where.not(id: @current_user.id) - @current_user.ratings.map{|rating| rating.doodle}).shuffle.first
       # Get the prompts not including the one that has already been chosen probably dont shuffle the whole thing just get a few entries and randomise
       # Again need to refine this
       @prompts = Prompt.where.not(id: @doodle.prompt.id).pluck(:question).shuffle[1,3]

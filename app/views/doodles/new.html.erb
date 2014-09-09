@@ -1,4 +1,4 @@
-<% unless @error.present? %>
+<% if @prompt.present? %>
   <div class="drawingarea">
     <h1 id="question"><%= @prompt.question %></h1>
     <button id="submit" class="timer"></button>

@@ -23,7 +23,7 @@ $(document).ready(function() {
       context.moveTo(mousepos.x, mousepos.y);
       context.lineTo(oldposition.x, oldposition.y);
       context.strokeStyle = color;
-      context.lineWidth = 15;
+      context.lineWidth = 10;
       context.stroke();
       return mousepos;
     }

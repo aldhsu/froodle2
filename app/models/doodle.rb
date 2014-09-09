@@ -16,4 +16,8 @@ class Doodle < ActiveRecord::Base
   has_many :ratings
 
   mount_uploader :image, ImageUploader
+
+  def self.get_prompt(user)
+    Prompt.where.not(id: user.doodles.joins(:prompt).pluck("doodles.prompt_id")).shuffle.first
+  end
 end

@@ -7,3 +7,7 @@
     width: 30vw !important;
   }
 }
+
+.check-section {
+  @extend #guess-doodles;
+}

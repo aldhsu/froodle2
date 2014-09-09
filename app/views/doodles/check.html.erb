@@ -1,9 +1,10 @@
-<%= image_tag(@doodle.image) %>
-
-<p>
-  Your Answer: <%= @answer  %>
-</p>
-<p>
-  <%= @display %>
-</p>
-<%= link_to("Another?", doodle_guess_path) %>
+<h1>You are <%= @display %></h1>
+<div class="check-section">
+  <div class='doodle img-responsive img-rounded'>
+    <%= image_tag(@doodle.image) %>
+  </div>
+  <p>
+    Your Answer: <%= @answer  %>
+  </p>
+  <%= link_to("Another?", doodle_guess_path, class: "btn btn-default") %>
+</div>
