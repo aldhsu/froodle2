@@ -50,7 +50,7 @@ canvas {
   display: inline-block;
   border-radius: 5px;
   img {
-    width: 200px;
+    max-width: 200px;
   }
 }
 .userdoodle {
@@ -110,6 +110,13 @@ canvas {
   margin-top: 10px;
 }
 
-.navbar-default {
-  background-color: #000;
+.navbar-inverse {
+  border-radius: 0px !important;
+  .navbar-inverse .navbar-nav > li {
+    color: #eeeeee !important;
+  }
+}
+
+#canvas {
+  max-height: 60%;
 }

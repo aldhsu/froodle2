@@ -10,28 +10,17 @@
 var GPLUS_API = {
 
   authResult: null,
-
-  /**
-   * Record the result of an authorization attempt by storing the result
-   * and firing an event.
-   *
-   * @param {Object} authResult the authorization result receieved.
-   */
+  // Store result and fire send to server
   recordAuthResult: function(authResult) {
     this.authResult = authResult;
     this.sendCodeToServer();
   },
-
-  /**
-   * Send the `code` from the authResult to the server to initiation the one
-   * time code flow.  When finished, display the user's name in the nav bar.
-   */
+  // send auth result to server and handle look and feel
   sendCodeToServer: function() {
     if (this.authResult['status']['signed_in']) {
     // Update the app to reflect a signed in user
     // Hide the sign-in button now that the user is authorized, for example:
       $('#signinButton').toggle();
-
       $.ajax({
         url: "/sessions",
         type: "POST",
@@ -46,19 +35,14 @@ var GPLUS_API = {
       });
     }
   }
-
 };
-
-/**
- * Register the click handler for the logout link.
- */
+// Register listeners
 $(document).ready(function() {
-  GPLUS_API.authResult = GPLUS_API.authResult || {};
-  GPLUS_API.authResult.access_token = GPLUS_API.authResult.access_token || $('[data-access-token]').attr('data-access-token');
   $('#logout').click(function() {
     GPLUS_API.disconnect();
   });
 });
+
 function signInCallback(authResult) {
   GPLUS_API.recordAuthResult(authResult);
 }

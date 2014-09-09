@@ -44,6 +44,7 @@ $(document).ready(function() {
         oldposition = getMousePos;
       }
       if (drawing == true) {
+        console.log(event.clientX);
         oldposition = draw(oldposition, canvas, event, context);
       }
     })
@@ -107,7 +108,7 @@ $(document).ready(function() {
     function Tick() {
       TotalSeconds -= 1;
       UpdateTimer();
-      if (TotalSeconds == 60) {
+      if (TotalSeconds == 0) {
         console.log('finish');
         submitPicture();
       }
