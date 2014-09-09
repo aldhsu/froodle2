@@ -18,7 +18,7 @@
 @import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Just+Me+Again+Down+Here);
 @import url(http://fonts.googleapis.com/css?family=Duru+Sans);
-@import "froodle2";
+@import "doodles";
 @import "guess";
 // main styling
 body {
@@ -34,7 +34,11 @@ body {
   width: 85vw;
   border-radius: 1em;
   box-shadow: 10px 10px 5px black;
-
+  @media screen and (max-width: 320px) {
+    width: 100vw;
+    height: 70vh;
+    margin: none;
+  }
 }
 
 h1, h2, h3, .navbar-brand {
@@ -52,6 +56,11 @@ h1, h2, h3, .navbar-brand {
 #title {
   font-size: 10em;
   margin-top: 30vh;
+
+  @media screen and (max-width: 320px)  {
+    font-size: 5em;
+    margin-top: 1em;
+  }
 }
 .active {
   background: #eee;

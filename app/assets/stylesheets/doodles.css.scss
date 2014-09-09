@@ -1,3 +1,58 @@
 // Place all the styles related to the Doodles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// drawing styling
+.drawingarea {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.doodle {
+  background: rgba(0,0,0,.6);
+  display: inline-block;
+  border-radius: 5px;
+  img {
+    max-width: 200px;
+  }
+}
+
+canvas {
+  background: rgba(0,0,0,.6);
+  display: inline-block;
+  margin: 0 auto;
+  border-radius: 5px;
+  max-width: 50%;
+  @media screen and (max-width: 320px) {
+    max-width: 100%
+  }
+}
+
+#timer {
+  background: black;
+  height: 10px;
+}
+
+.swatch {
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+// doodle display
+#sectiondoodles {
+  text-align: justify;
+  p {
+    text-align: left;
+  }
+}
+
+.userdoodle {
+  margin: 0px;
+  display: inline-block;
+  margin-bottom: 10px;
+  p {
+    margin-bottom: 0px;
+  }
+}

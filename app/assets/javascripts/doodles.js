@@ -31,26 +31,34 @@ $(document).ready(function() {
     var drawing = false;
     var dirty = false;
     // Drawing Listeners convert to websockets, send x events
-    canvas.addEventListener("mousedown", function(event) {
+    function startListening(event) {
+      event.preventDefault();
+      console.log('startListening')
       oldposition = getMousePos(canvas, event);
       drawing = true;
       dirty = true;
-    })
-    canvas.addEventListener("mouseup", function(event) {
+    }
+    function stopListening(event) {
+      event.preventDefault();
       drawing = false;
-    })
-    canvas.addEventListener("mouseout", function(event) {
-      drawing = false;
-    })
-    canvas.addEventListener("mousemove", function(event) {
+    }
+    function drawLine(event) {
+      event.preventDefault();
       if (oldposition == null) {
         oldposition = getMousePos;
       }
       if (drawing == true) {
-        console.log(event.clientX);
         oldposition = draw(oldposition, canvas, event, context);
       }
-    })
+    }
+    canvas.addEventListener("mousedown", startListening);
+    canvas.addEventListener("mouseup", stopListening);
+    canvas.addEventListener("mouseout", stopListening);
+    canvas.addEventListener("mousemove", drawLine);
+    canvas.addEventListener("touchstart", startListening);
+    canvas.addEventListener("touchend", stopListening);
+    canvas.addEventListener("touchcancel", stopListening);
+    canvas.addEventListener("touchmove", drawLine);
     // Change color
     $(".swatch").click(function(){
       color = $(this).attr("hex");
