@@ -1,12 +1,10 @@
 <div class="welcome">
   <h1 id="title">Froodle</h1>
-  <% unless @current_user %>
     <h2>Doodle with Friends!</h2>
+  <% unless @current_user %>
     <h2>Sign in with Google Plus!</h2>
-  <% else %>
-    <h2>Draw with your friends!</h2>
+  <% end %>
     <h2>Suggest prompts and guess doodles.</h2>
     <h2>You get points for people guessing your doodles.</h2>
     <h2>Try and beat your friends scores!</h2>
-  <% end %>
 </div>
