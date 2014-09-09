@@ -34,7 +34,7 @@ class DoodlesController < ApplicationController
       @doodle = (Doodle.where.not(id: @current_user.id) - @current_user.ratings.map{|rating| rating.doodle}).shuffle.first
       # Get the prompts not including the one that has already been chosen probably dont shuffle the whole thing just get a few entries and randomise
       # Again need to refine this
-      @prompts = Prompt.where.not(id: @doodle.prompt.id).pluck(:question).shuffle[1,3]
+      @prompts = (Prompt.where.not(id: @doodle.prompt.id).pluck(:question).shuffle[1,3] + [@doodle.prompt.question]).shuffle
       # raise
     rescue
       @error = "No Doodles left to guess."
