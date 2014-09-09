@@ -1,0 +1,9 @@
+// doodle guessin formatting
+#guess-doodles {
+  text-align: center;
+  margin-top: 2em;
+  .doodle img {
+    max-width: none;
+    width: 30vw !important;
+  }
+}

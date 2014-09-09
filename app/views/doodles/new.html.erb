@@ -1,4 +1,4 @@
-<% if @prompt.present? %>
+<% unless @error.present? %>
   <div class="drawingarea">
     <h1 id="question"><%= @prompt.question %></h1>
     <button id="submit" class="timer"></button>
@@ -10,10 +10,12 @@
       <div class="swatch" style="background: #ffffff" hex="#ffffff"></div>
       <div class="swatch" style="background: #3fff00" hex="#3fff00"></div>
       <div class="swatch" style="background: #000000" hex="#000000"></div>
+      <div class="swatch" style="background: #ffff00" hex="#ffff00"></div>
     </div>
   </div>
 <% else %>
   <div class="welcome">
-    <%= "No more prompts!" %>
+    <h1>No more prompts!</h1>
+    <p>Suggest a one.</p>
   </div>
 <% end %>

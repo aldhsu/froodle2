@@ -7,9 +7,13 @@ $(document).ready(function() {
 
     function getMousePos(canvas, event){
       var rect = canvas.getBoundingClientRect();
+      // handle different canvas sizes
+      var height = $('canvas').height();
+      var size = parseInt($('canvas').attr('height'));
+      var differential = size/height;
       return {
-        x: event.clientX - rect.left,
-        y: event.clientY - rect.top
+        x: (event.clientX - rect.left) * differential,
+        y: (event.clientY - rect.top) * differential
       };
     }
 
@@ -26,7 +30,7 @@ $(document).ready(function() {
     var oldposition = null;
     var drawing = false;
     var dirty = false;
-    // Drawing Listeners convert to websockets
+    // Drawing Listeners convert to websockets, send x events
     canvas.addEventListener("mousedown", function(event) {
       oldposition = getMousePos(canvas, event);
       drawing = true;
@@ -38,7 +42,6 @@ $(document).ready(function() {
     canvas.addEventListener("mouseout", function(event) {
       drawing = false;
     })
-
     canvas.addEventListener("mousemove", function(event) {
       if (oldposition == null) {
         oldposition = getMousePos;
@@ -94,7 +97,7 @@ $(document).ready(function() {
     button.addEventListener("click", function() {
       submitPicture();
     })
-
+    // Timer function
     var Timer;
     var TotalSeconds;
 

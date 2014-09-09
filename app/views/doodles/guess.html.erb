@@ -1,21 +1,20 @@
-<% unless @prompt %>
-  <div id='sectiondoodles'>
+<% unless @error %>
+  <h1>Guess the Doodle!</h1>
+  <div id='guess-doodles'>
     <div class='doodle img-responsive img-rounded'>
       <%= image_tag(@doodle.image) %>
     </div>
+    <div class="btn-group btn-group-justified">
       <%= form_tag doodle_guess_path do %>
-        <% @prompts.shuffle.each do |prompt|%>
-          <%= radio_button_tag(:question, prompt) %>
-          <%= label_tag(:question, prompt) %>
+        <% @prompts.each do |prompt|%>
+          <%= button_tag(prompt, {value: prompt, name: :question  , class: "btn btn-default"}) %>
         <% end %>
         <%= text_field_tag(:id, @doodle.id, hidden: true )%>
-        <p>
-          <%= submit_tag(value = 'Guess!') %>
-        </p>
       <% end %>
     </div>
 <% else %>
   <div class="welcome">
-    <p><%= @prompt %></p>
+    <h1>No more doodles left to guess!</h1>
+    <p>Get your friends to draw some!</p>
   </div>
 <% end %>

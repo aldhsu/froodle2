@@ -1,5 +1,4 @@
 class DoodlesController < ApplicationController
-  # skip_before_action :verify_authenticity_token
 
   def index
     @doodles = Doodle.all
@@ -31,11 +30,14 @@ class DoodlesController < ApplicationController
     #catch error if none left
     begin
       #get all doodles, subtract where ratings exist
+      #need to refine this again with joins (Doodle.joins(:rating).where.not('ratings.user_id' => @current_user ), random on count?)
       @doodle = (Doodle.all - @current_user.doodles - @current_user.ratings.map{|rating| rating.doodle}).shuffle.first
-      @prompts = [@doodle.prompt.question] + (Prompt.all-[@doodle.prompt]).shuffle[1,3].map{|prompt| prompt.question}
+      # Get the prompts not including the one that has already been chosen probably dont shuffle the whole thing just get a few entries and randomise
+      # Again need to refine this
+      @prompts = Prompt.where.not(id: @doodle.prompt.id).pluck(:question).shuffle[1,3]
       # raise
     rescue
-      @prompt = "No Doodles left to guess"
+      @error = "No Doodles left to guess."
     end
   end
 

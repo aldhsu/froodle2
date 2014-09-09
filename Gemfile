@@ -43,7 +43,7 @@ gem 'cloudinary'
 gem 'google_plus'
 gem 'httparty'
 gem 'bootstrap-sass'
-
+gem 'bootstrap-slider-rails'
 
 group :production do
   gem 'rails_12factor', group: :production

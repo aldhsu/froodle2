@@ -20,7 +20,7 @@ var GPLUS_API = {
     if (this.authResult['status']['signed_in']) {
     // Update the app to reflect a signed in user
     // Hide the sign-in button now that the user is authorized, for example:
-      $('#signinButton').toggle();
+      // $('#signinButton').toggle();
       $.ajax({
         url: "/sessions",
         type: "POST",

@@ -6,30 +6,32 @@
   </p>
 <% end %>
 
-<p>Points: <%= @current_user.points %></p>
-<div id="sectiondoodles">
+<p>Total Points: <%= @current_user.points %></p>
 <h1>User Doodles</h1>
+<div id="sectiondoodles">
 <% @current_user.doodles.each do |doodle| %>
    <div class="userdoodle">
     <p>
-      <%= doodle.prompt.question %>: +<%= doodle.prompt.difficulty %>
+      <strong><%= doodle.prompt.question %></strong>: +<%= doodle.prompt.difficulty %>
     </p>
     <div class="doodle img-responsive img-rounded">
       <%= image_tag(doodle.image) %>
     </div>
     <div class="doodleinfo">
       <p>Users guessed</p>
+      <!-- Doodle ratings -->
       <p>Correctly:<%= right = doodle.ratings.where(guessed: 1).count %>, points <%= right * doodle.prompt.difficulty%></p>
       <p>Incorrectly:<%= doodle.ratings.where(guessed: -1).count %></p>
-
     </div>
   </div>
 <% end %>
 <% if @current_user.ratings.present? %>
   <h1>Rated Doodles</h1>
+  <!-- <% %> -->
   <% @current_user.ratings.each do |rating| %>
     <div class="userdoodle">
       <p><%= rating.doodle.prompt.question %> Difficulty: <%= rating.doodle.prompt.difficulty %></p>
+      <!-- Guessed correctly or incorrectly -->
       <p><%= rating.guessed == 1 ? 'Correct' : 'Incorrect' %></p>
       <div class="doodle img-responsive img-rounded">
         <%= image_tag(rating.doodle.image) %>
