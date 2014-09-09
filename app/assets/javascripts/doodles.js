@@ -33,17 +33,25 @@ $(document).ready(function() {
     // Drawing Listeners convert to websockets, send x events
     function startListening(event) {
       event.preventDefault();
-      console.log('startListening')
+      if (event.changedTouches) {
+        event = event.changedTouches[0]
+      }
       oldposition = getMousePos(canvas, event);
       drawing = true;
       dirty = true;
     }
     function stopListening(event) {
       event.preventDefault();
+      if (event.changedTouches) {
+        event = event.changedTouches[0]
+      }
       drawing = false;
     }
     function drawLine(event) {
       event.preventDefault();
+      if (event.changedTouches) {
+        event = event.changedTouches[0]
+      }
       if (oldposition == null) {
         oldposition = getMousePos;
       }
