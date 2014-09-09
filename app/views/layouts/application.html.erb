@@ -8,25 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<div class="container">
-  <!-- Google Sign in -->
-  <nav>
-  <% unless @current_user%>
-    <%= render partial: '/layouts/sign_in_button' %>
-  <% end %>
-  <% if @current_user %>
-    <div id="username" class="row"><%= "Welcome back #{@current_user.name}!" %> <a class="logout" href="#">Log Out</a></div>
-      <div id="smartnav">
-        <ul class="nav nav-tabs" role="tablist">
-          <li><%= link_to("User Details", users_details_path) %></li>
-          <li><%= link_to("Draw!", new_doodle_path) %></li>
-          <li><%= link_to("Suggest Prompts", new_prompt_path) %></li>
-          <li><%= link_to("Guess Doodles", doodle_guess_path) %></li>
-        </ul>
-      </div>
-    <% end %>
-  </nav>
-
+<%= render partial: '/layouts/bootstrap_nav' %>
+<div class="container span12">
   <%= yield %>
 </div>
 </body>

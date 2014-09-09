@@ -1,13 +1,11 @@
-<span id="signinButton">
-  <span
-    class="g-signin"
-    data-callback="signinCallback"
+<div id="signinButton">
+  <span class="g-signin"
+    data-scope="https://www.googleapis.com/auth/plus.login"
     data-clientid="326708415798-9ildkh4i1g8k5unf43cgdk8774oikhbk.apps.googleusercontent.com"
+    data-redirecturi="postmessage"
     data-accesstype="offline"
     data-cookiepolicy="single_host_origin"
-    data-requestvisibleactions="http://schema.org/AddAction"
-    data-redirecturi="postmessage"
-    data-scope="https://www.googleapis.com/auth/plus.login">
+    data-callback="signInCallback">
   </span>
-</span>
-<script type="text/javascript"></script>
+</div>
+<div id="result"></div>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
+  delete 'session' => 'sessions#destroy'
   post 'sessions' => 'sessions#create'
-  post 'sessions/:id' => 'sessions#destroy'
 
   get '/users/details' => 'users#details'
   get '/users/destroy' => 'users#destroy'

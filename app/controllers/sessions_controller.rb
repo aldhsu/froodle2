@@ -8,10 +8,17 @@ class SessionsController < ApplicationController
     if (user = User.find_by(gpid: user_id)) == nil
       user = User.create(gpid: user_id, name: name)
     end
+    user.update(access_token: @access_token)
     session['user_id'] = user.id
     render json: user
   end
 
   def destroy
+    revokeUrl = "https://accounts.google.com/o/oauth2/revoke?token=#{@current_user.access_token}";
+    response = HTTParty.get(revokeUrl)
+    if response.nil?
+      session[:user_id] = nil
+      redirect_to root_path
+    end
   end
 end

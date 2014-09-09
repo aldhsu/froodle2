@@ -20,7 +20,7 @@
 body {
   background: url('http://i.stack.imgur.com/GySvQ.png');
   font-family: 'Just Me Again Down Here', cursive;
-  font-size: 3em;
+  font-size: 1.5em;
 }
 .drawingarea {
   margin: 0 auto;
@@ -33,13 +33,6 @@ canvas {
   border-radius: 5px;
 }
 
-nav {
-  position:relative;
-  height:65px;
-  border-bottom: 4px solid #eee;
-  margin-bottom: 1em;
-}
-
 #username {
   display: inline-block;
   width:20%;
@@ -48,11 +41,6 @@ nav {
   margin-left: .5em;
 }
 
-#smartnav {
-  position: absolute;
-  right:0;
-  width:80%;
-}
 
 #sectiondoodles {
   text-align: center;
@@ -99,11 +87,6 @@ nav {
   box-shadow: 10px 10px 5px black;
 }
 
-.nav {
-  position: absolute;
-  right: 0;
-}
-
 .welcome {
   text-align: center;
 }
@@ -123,4 +106,10 @@ nav {
   margin: 0 auto;
   width: 400px;
 }
+#signinButton {
+  margin-top: 10px;
+}
 
+.navbar-default {
+  background-color: #000;
+}
