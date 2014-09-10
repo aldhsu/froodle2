@@ -18,12 +18,10 @@
           <p class="navbar-text">
             <%= "Welcome back #{@current_user.name}!" %>
           </p>
-        <% end %>
         <li><%= link_to("User Details", users_details_path) %></li>
         <li><%= link_to("Draw!", new_doodle_path) %></li>
         <li><%= link_to("Suggest Prompts", new_prompt_path) %></li>
         <li><%= link_to("Guess Doodles", doodle_guess_path) %></li>
-        <% if @current_user %>
           <li><%= link_to("Log Out", session_path, method: :delete) %></li>
         <% else %>
         <!-- Google Sign in -->
